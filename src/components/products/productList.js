@@ -12,19 +12,17 @@ class productList extends PureComponent {
 
   renderList() {
     return this.props.products.map((product) => (
-      <div className="item" key={product.id}>
-        <i className="large middle aligned icon user" />
-        <div className="content">
-          <div className="">
-            <div className="description">
-              <h2>{product.name}</h2>
-
-              {/* <p>{post.body}</p> */}
+      <div className="ui link cards" key={product.id}>
+        <div className="card">
+          <div className="content">
+            <Link to={`/products/${product.id}`} className="header">{product.name}</Link>
+            <div className="meta">
+              <a>{product.price.current.text}</a>
             </div>
-
+            <div className="description" />
           </div>
+          
         </div>
-
       </div>
 
     ));
@@ -34,14 +32,16 @@ class productList extends PureComponent {
     return (
       <div>
         <h2>Products</h2>
-        {this.renderList()}
+        <div className="ui grid container">
+          {this.renderList()}
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  products: Object.values(state.products),
+  products: state.products,
 
 });
 export default connect(mapStateToProps, { fetchProducts })(productList);

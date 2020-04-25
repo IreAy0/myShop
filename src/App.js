@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
 import Header from './components/header';
 import ProductList from './components/products/productList';
+import ProductDetails from './components/products/productDetail'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Header />
           <Switch>
             <Route path="/" exact component={ProductList} />
+            <Route path="/products/:id" exact component={ProductDetails} />
           </Switch>
         </div>
 
