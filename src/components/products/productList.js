@@ -17,7 +17,7 @@ class productList extends PureComponent {
         <div className="content">
           <div className="">
             <div className="description">
-              <h2>{product.products.name}</h2>
+              <h2>{product.name}</h2>
 
               {/* <p>{post.body}</p> */}
             </div>
@@ -41,7 +41,7 @@ class productList extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.products,
+  products: Object.values(state.products),
 
 });
 export default connect(mapStateToProps, { fetchProducts })(productList);
