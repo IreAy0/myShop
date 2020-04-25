@@ -1,10 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-undef */
 import history from '../history';
-import api from '../api/allapi';
+import apis from '../api/allapi';
 
 export const fetchProducts = () => async (dispatch) => {
-  const response = await api.getData('products/v2/list');
+  const response = await apis.get('/products/v2/list');
 
-  dispatch({ type: 'FETCH_PRODUCTS', payload: response.products });
+  dispatch({ type: 'FETCH_PRODUCTS', payload: response.data });
 };
