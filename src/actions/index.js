@@ -11,11 +11,14 @@ export const fetchProducts = () => async (dispatch) => {
     });
 };
 
+export const getProduct = () => ({ type: 'GET_PRODUCT' });
 export const fetchDetail = (id) => async (dispatch) => {
-  // api.getData(`products/v3/detail?store=US&sizeSchema=US&lang=en-US&currency=USD&id=${id}`)
-  api.getData('products/v3/detail?store=US&sizeSchema=US&lang=en-US&currency=USD&id=9851612')
+  dispatch(getProduct());
+  api.getData(`products/v3/detail?store=US&sizeSchema=US&lang=en-US&currency=USD&id=${id}`)
+  // api.getData('products/v3/detail?store=US&sizeSchema=US&lang=en-US&currency=USD&id=9851612')
     .then((response) => {
-      console.log(response.data)
+      console.log(response.data.description);
+
       dispatch({ type: 'PRODUCT_DETAIL', payload: response.data });
     });
 };
