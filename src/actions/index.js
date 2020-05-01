@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-undef */
 // import history from '../history';
@@ -21,4 +23,24 @@ export const fetchDetail = (id) => async (dispatch) => {
 
       dispatch({ type: 'PRODUCT_DETAIL', payload: response.data });
     });
+};
+
+export const addToCart = (items, product) => (dispatch) => {
+  const cartItems = items.slice();
+  let productInCart = false;
+
+  cartItems.forEach((item) => {
+    if (item.id === product.id) {
+      item.count++;
+      productInCart = true;
+    }
+  });
+  if (!productInCart) {
+    cartItems.push({ ...product, count: 1 });
+  }
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  return dispatch({
+    type: 'ADD_TO_CART',
+    payload: { cartItems },
+  });
 };

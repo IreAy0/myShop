@@ -45,10 +45,10 @@ export class productDetail extends PureComponent {
 
   render() {
     console.log(this.props.details);
-   
+
     return (
 
-      <div className="" >
+      <div className="">
 
         {this.renderProduct()}
       </div>
