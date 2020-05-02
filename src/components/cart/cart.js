@@ -1,11 +1,64 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Item from './item';
 
-export default class cart extends Component {
+class Cart extends Component {
   render() {
-    return (
+    const cart = this.props.cart.length > 0 ? (
       <div>
-        hello
+        <div className="card-body">
+          {
+            this.props.cart.map((item) => (
+              <div key={item.product.id}>
+                <Item item={item} />
+              </div>
+            ))
+          }
+        </div>
+        <div className="card-footer">
+          <div className="row text-center">
+            <div className="col-xs-11">
+              <h4 className="text-right">Total</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div className="card-body">
+        <p>empty cart</p>
+      </div>
+    );
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12 col-xs-12">
+            <div className="card ">
+              <div className="card-header">
+                <div className="card-title">
+                  <div className="row">
+                    <div className="col-xs-6">
+                      <h5>
+                        <i className="shopping basket icon" />
+
+                        My Shopping Cart
+                      </h5>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              {cart}
+
+
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
+const mapStateToProps = (state) => ({ cart: state.cart.cart });
+
+export default connect(mapStateToProps)(Cart);

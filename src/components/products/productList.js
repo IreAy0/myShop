@@ -15,6 +15,7 @@ class productList extends PureComponent {
     this.props.fetchProducts();
   }
 
+
   renderList() {
     return this.props.products.map((product) => (
       // console.log('added to cart')
@@ -27,7 +28,7 @@ class productList extends PureComponent {
             </div>
             <div className="description" />
           </div>
-          <div className="ui animated fade button" tabIndex="0" onClick={(e) => this.props.addToCart(this.props.cartItems, product)}>
+          <div className="ui animated fade button" tabIndex="0" onClick={(e) => { e.preventDefault(); this.props.addToCart(product); }}>
             <div className="visible content">
               <i className="shop icon" />
             </div>
@@ -35,7 +36,7 @@ class productList extends PureComponent {
               <i className="plus icon" />
             </div>
           </div>
-          
+
         </div>
       </div>
 
