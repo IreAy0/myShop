@@ -21,7 +21,7 @@ class Cart extends Component {
         <div className="card-footer">
           <div className="row text-center">
             <div className="col-xs-11">
-              <h4 className="text-right">Total : <strong>${total.toFixed(3)}</strong></h4>
+              <h4 className="text-right">Total : <strong>${total.toFixed(2)}</strong></h4>
             </div>
           </div>
         </div>
