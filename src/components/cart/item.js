@@ -16,7 +16,7 @@ class Item extends Component {
             <h6>
               <strong>
                 {this.props.item.product.price.current.text}
-                <span className="text-muted">x</span>
+
               </strong>
             </h6>
           </div>

@@ -5,6 +5,8 @@ import Item from './item';
 
 class Cart extends Component {
   render() {
+    let total = 0;
+    this.props.cart.map((item) => total += item.product.price.current.value * item.quantity);
     const cart = this.props.cart.length > 0 ? (
       <div>
         <div className="card-body">
@@ -19,7 +21,7 @@ class Cart extends Component {
         <div className="card-footer">
           <div className="row text-center">
             <div className="col-xs-11">
-              <h4 className="text-right">Total</h4>
+              <h4 className="text-right">Total : <strong>${total.toFixed(3)}</strong></h4>
             </div>
           </div>
         </div>
