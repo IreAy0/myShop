@@ -6,6 +6,11 @@ export default (state = InitialState, action) => {
     case 'ADD_TO_CART':
       cart.push(action.payload);
       return { ...state, cart };
+    case 'REMOVE_FROM_CART':
+      return {
+        ...state,
+        cart: cart.filter((item) => item.product.id !== action.payload.productId),
+      };
     default:
       return state;
   }

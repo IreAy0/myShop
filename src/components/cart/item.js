@@ -1,30 +1,33 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { removeFromCart } from '../../actions/index';
 
 class Item extends Component {
+  handleRemove = (e) => {
+    e.preventDefault();
+    this.props.removeFromCart(this.props.item.product.id);
+  }
+
   render() {
     return (
 
-      <div className="row">
 
-        <div className="col-xs-4">
-          <h4 className="product-name"><strong>{this.props.item.product.name}</strong></h4>
+      <div className="ui horizontal segments">
+        <div className="ui segment">
+          <p>{this.props.item.product.name}</p>
         </div>
-        <div className="col-xs-6">
-          <div className="col-xs-3 text-right">
-            <h6>
-              <strong>
-                {this.props.item.product.price.current.text}
-
-              </strong>
-            </h6>
-          </div>
-
+        <div className="ui segment">
+          <p>{this.props.item.product.price.current.text}</p>
+        </div>
+        <div className="ui segment">
+          <button type="button" onClick={this.handleRemove} className="btn btn-link btn-xs">
+            <i className="trash alternate outline icon" />
+          </button>
         </div>
       </div>
     );
   }
 }
 
-export default Item;
+export default connect(null, { removeFromCart })(Item);

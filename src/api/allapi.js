@@ -7,7 +7,7 @@ export default {
     headers: {
       'content-type': 'application/json',
       'x-rapidapi-host': 'asos2.p.rapidapi.com',
-      'x-rapidapi-key': '6595d61f38msh5cd7dcb21851847p131acajsnebf857459ca5',
+      'x-rapidapi-key': 'cf945338a8msh91d42d394e7cd47p1b16fajsn8bb335bc956d',
     },
   }),
 };

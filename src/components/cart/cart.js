@@ -7,6 +7,7 @@ class Cart extends Component {
   render() {
     let total = 0;
     this.props.cart.map((item) => total += item.product.price.current.value * item.quantity);
+
     const cart = this.props.cart.length > 0 ? (
       <div>
         <div className="card-body">
@@ -28,7 +29,7 @@ class Cart extends Component {
       </div>
     ) : (
       <div className="card-body">
-        <p>empty cart</p>
+        <p>Nothing in cart</p>
       </div>
     );
     return (

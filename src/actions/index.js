@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
@@ -31,6 +32,15 @@ export const addToCart = (product) => (dispatch) => {
     payload: {
       product,
       quantity: 1,
+    },
+  });
+};
+
+export const removeFromCart = (productId) => (dispatch) => {
+  dispatch({
+    type: 'REMOVE_FROM_CART',
+    payload: {
+      productId,
     },
   });
 };
